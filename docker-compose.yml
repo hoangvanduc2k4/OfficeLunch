@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  # 1. Redis
+  redis:
+    image: redis:alpine
+    container_name: officelunch_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisvolume:/data
+
+  # 2. Redis Commander 
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: officelunch_redis_ui
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis
+
+volumes:
+  sqlvolume:
+  redisvolume:
