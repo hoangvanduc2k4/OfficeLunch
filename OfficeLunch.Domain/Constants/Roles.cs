@@ -3,7 +3,7 @@
     public static class Roles
     {
         public const string Admin = "Admin";
-        public const string User = "Staff";
-        public const string Guest = "Customer";
+        public const string Staff = "Staff"; // Kitchen Staff
+        public const string User = "User";   // Office Employee
     }
 }

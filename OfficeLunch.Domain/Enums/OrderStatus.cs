@@ -2,11 +2,10 @@
 {
     public enum OrderStatus
     {
-        Draft = 0,      // Item added to cart, not submitted
-        Pending = 1,    // Submitted by Host, waiting for Kitchen
-        Cooking = 2,    // Kitchen accepted, currently cooking
-        Ready = 3,      // Cooked, waiting for pickup/delivery
-        Completed = 4,  // Delivered/Picked up
-        Cancelled = 5   // Cancelled by Host or Kitchen (Out of stock)
+        Pending = 0,    // Waiting for kitchen
+        Cooking = 1,    // Kitchen is preparing
+        Ready = 2,      // Ready for pickup
+        Completed = 3,  // Picked up by user
+        Cancelled = 4   // Cancelled (Refunded)
     }
 }

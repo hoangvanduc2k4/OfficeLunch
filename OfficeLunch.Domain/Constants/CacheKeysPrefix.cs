@@ -2,10 +2,11 @@
 {
     public static class CacheKeysPrefix
     {
-        public const string ProductStock = "stock:";
-        public const string CartHold = "carthold:";
-        public const string Session = "session:";
-        public const string DailyMenu = "menu:";
+        // Pattern: stock:{dailyMenuId}
+        public const string StockPrefix = "stock:";
+
+        // ZSET Key for Kitchen Queue
+        public const string KitchenQueue = "kitchen_queue";
 
     }
 }

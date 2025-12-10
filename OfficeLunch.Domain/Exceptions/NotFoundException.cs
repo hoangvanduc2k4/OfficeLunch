@@ -5,7 +5,7 @@
         // VD: throw new NotFoundException("Product", 10);
         // Output: "Entity \"Product\" (10) was not found."
         public NotFoundException(string name, object key)
-            : base($"Entity \"{name}\" ({key}) was not found.")
+                : base($"Entity \"{name}\" ({key}) was not found.")
         {
         }
 

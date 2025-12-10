@@ -1,20 +1,25 @@
 ﻿namespace OfficeLunch.Domain.Commons
 {
-    public abstract class AuditableEntity : BaseEntity, ISoftDelete
+    // Adds tracking columns + Soft Delete flag
+    public abstract class AuditableEntity : BaseEntity
     {
-        public required string CreatedBy { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public string? LastModifiedBy { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public string? CreatedBy { get; set; }
+
         public DateTime? LastModifiedAt { get; set; }
+        public string? LastModifiedBy { get; set; }
 
-        // Implement Soft Delete
-        public bool IsDeleted { get; set; }
-        public DateTime? DeletedAt { get; set; }
+        public bool IsDeleted { get; set; } = false;
+    }
 
-        public void UndoDelete()
-        {
-            IsDeleted = false;
-            DeletedAt = null;
-        }
+    public abstract class AuditableEntity<TKey> : BaseEntity<TKey>
+    {
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public string? CreatedBy { get; set; }
+
+        public DateTime? LastModifiedAt { get; set; }
+        public string? LastModifiedBy { get; set; }
+
+        public bool IsDeleted { get; set; } = false;
     }
 }
