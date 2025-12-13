@@ -9,6 +9,7 @@ namespace OfficeLunch.Application.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
+
             // 1. AutoMapper
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
