@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <Folder Include="Common\Models\" />
-    <Folder Include="Common\Settings\" />
     <Folder Include="DTOs\Auth\Response\" />
     <Folder Include="DTOs\Wallet\Request\" />
     <Folder Include="DTOs\Wallet\Response\" />

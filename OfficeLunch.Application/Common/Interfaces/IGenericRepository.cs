@@ -5,28 +5,28 @@ namespace OfficeLunch.Application.Common.Interfaces
 {
     public interface IGenericRepository<T> where T : class
     {
-        // Find an entity by its primary key
+        // 1. Retrieve an entity by its primary key
         Task<T?> GetByIdAsync(object id);
 
-        // Get all entities of this type
-        Task<List<T>> GetAllAsync();
-
-        // Insert a new entity into the database
+        // 2. Add a new entity to the data store
         Task AddAsync(T entity);
 
-        // Update an existing entity
-        Task UpdateAsync(T entity);
+        // 3. Update an existing entity (marks entity as modified)
+        void Update(T entity);
 
-        // Delete an existing entity
-        Task DeleteAsync(T entity);
+        // 4. Delete an entity (marks entity as deleted)
+        void Delete(T entity);
 
-        // Get entities with pagination, filtering, sorting, and optional includes
+        // 5. Generic method for retrieving a paged list
+        //    Supports filtering, sorting, pagination, and eager loading
         Task<PagedResponse<T>> GetPagedAsync(
             int pageNumber,
             int pageSize,
-            Expression<Func<T, bool>>? filter = null,                 // Optional WHERE condition
-            Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, // Optional ORDER BY
-            string includeProperties = ""                              // Comma-separated list of navigation properties
+            Expression<Func<T, bool>>? filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
+            // Uses expression-based includes for type safety
+            // to avoid magic strings and runtime errors
+            params Expression<Func<T, object>>[] includes
         );
     }
 }
